@@ -7,6 +7,7 @@ variable "aws_account_id" {
   type = string
   default = null
 }
+
 variable "aws_region" {
   description = "AWS Region to apply resources to"
   type= string
