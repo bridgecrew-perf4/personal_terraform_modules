@@ -68,7 +68,7 @@ resource "aws_ecs_cluster" "production_personal" {
   name = var.ecs_cluster_name
 }
 
-resource "aws_ecs_service" "strapi_personal_blog" {
+resource "aws_ecs_service" "personal_service" {
   name = var.ecs_service_name
   cluster = aws_ecs_cluster.production_personal.id
   task_definition = aws_ecs_task_definition.task_definition.arn
@@ -82,7 +82,7 @@ resource "aws_ecs_service" "strapi_personal_blog" {
     container_port = var.task_port
   }
   network_configuration {
-    subnets = var.ecs_subnets
+    subnets = local.subnet_ids
     security_groups = var.ecs_security_groups
     assign_public_ip = true
   }

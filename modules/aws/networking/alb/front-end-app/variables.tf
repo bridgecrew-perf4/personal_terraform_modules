@@ -9,6 +9,12 @@ variable "alb_name" {
   default = null
 }
 
+variable "vpc_id" {
+  description = "The VPC Ids to deploy to"
+  type = string
+  default = null
+}
+
 variable "subnet_ids" {
   description = "The subnet IDS to deploy to"
   type = list(string)

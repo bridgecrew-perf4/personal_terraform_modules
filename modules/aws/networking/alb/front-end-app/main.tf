@@ -5,19 +5,16 @@ terraform {
 resource "aws_lb" "personal_front_end" {
   name = var.alb_name
   load_balancer_type = local.application
-  subnets = var.subnet_ids
+  subnets = local.subnet_ids
   internal = var.internal
   security_groups = [aws_security_group.alb.id]
 }
 
-data "aws_vpc" "default" {
-  default = true
-}
 resource "aws_lb_target_group" "front_end" {
   name = var.alb_name
   port = local.http_port
   protocol = "HTTP"
-  vpc_id = data.aws_vpc.default.id
+  vpc_id = local.vpc_id
   target_type = var.target_type
   health_check {
     path = "/"
