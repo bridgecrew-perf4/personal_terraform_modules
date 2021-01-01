@@ -8,4 +8,8 @@ output "alb_arn" {
   description = "The aws lb target group arn"
 }
 
+output "alb_security_group" {
+  value = aws_security_group.alb.id
+  description = "Security group for the ALB"
+}
 
